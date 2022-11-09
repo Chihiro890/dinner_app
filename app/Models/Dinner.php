@@ -28,28 +28,12 @@ class Dinner extends Model
         if (!empty($params['country'])) {
             $query->where('country',  $params['country']);
         }
+        if (!empty($params['calendar'])) {
+            $query->where('calendar',  $params['calendar']);
+        }
         return $query;
     }
-    // 検索用のスコープここまで
-
-// 検索ここから
-    // public function scopePublished(Builder $query)
-    // {
-    //     $query->where(‘is_published’, true)
-    //         ->where(‘start_date’, ‘>=’, now());
-    //     return $query;
-    // }
-// https://qiita.com/Yado_Tarou/items/9da4e5248e8df5b2c5ce
-    // スコープを使用するには必ず最初にscopeを名前の初めに付ける
-    // 最初の変数には必ず$queryを使用
-    // スコープとはhttps://zenn.dev/naoki_oshiumi/articles/28a14c75f79599
-    // public function scopeSearch(Builder $query, $search)
-    // {
-    //     if (!empty($search[‘career’])) {
-    //         $query->where(‘career’, ‘like’, ‘%’ . $search[‘career’] . ‘%’);
-    //     }
-    // }
-// 検索ここまで
+// 検索用ここまで
 
     public function user()
     {

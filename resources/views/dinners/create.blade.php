@@ -22,21 +22,24 @@
                 </label>
                 @foreach ($categories as $category)
                     {{-- <div> --}}
-                        <input type="checkbox" name="category_id" id="category{{ $category->id }}"
-                            value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'checked' : '' }}>
-                        <label for="category{{ $category->id }}">{{ $category->name }}</label>
+                    {{-- <input type="checkbox" name="category_id[]" id="category{{ $category->id }}" --}}
+                    <input type="radio" name="category_id" id="category{{ $category->id }}"
+                        value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'checked' : '' }}>
+                    <label for="category{{ $category->id }}">{{ $category->name }}</label>
                     {{-- </div> --}}
                 @endforeach
             </div>
-
+            {{-- other言語記入欄 --}}
 
 
 
             <div class="mb-4">
-            <label class="block text-gray-700 text-sm mb-2" for="calendar">
-            日程</div>
-                <input type="date" name="calendar" max="9999-12-31" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
-                
+                <label class="block text-gray-700 text-sm mb-2" for="calendar">
+                    日程
+            </div>
+            <input type="date" name="calendar" max="9999-12-31"
+                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
+
 
             <div class="mb-4">
                 {{-- <input type="string" name="country"> --}}
@@ -44,7 +47,7 @@
                     国
             </div>
             </label>
-            <select name="country" data-selected="{{ old('country', $country) }}">
+            <select name="country">
                 <option value="">選択してください</option>
                 <option value="Aland Islands">Aland Islands</option>
                 <option value="Albania">Albania</option>

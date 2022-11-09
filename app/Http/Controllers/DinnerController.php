@@ -26,9 +26,12 @@ class DinnerController extends Controller
     
 // 検索ここから
         $country = $request->country;
+        $calendar = $request->calendar;
         $params = $request->query();
         $dinners = Dinner::with('user')->search($params)->latest()->paginate(4);
-        $dinners->appends(compact('country'));
+        $dinners->appends(compact('country', 'calendar'));
+
+        // dd($dinners);
         return view('dinners.index', compact('dinners'));
     // 検索ここまで
         
@@ -51,11 +54,11 @@ class DinnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DinnerRequest $request)
+    public function store(Request $request)
     {
         $dinner = new Dinner($request->all());
         $dinner->user_id = $request->user()->id;
-
+        // $dinner->category_id = implode(",", $request->category_id);
         // $file = $request->file('image');
         // $dinner->image = self::createFileName($file);
 

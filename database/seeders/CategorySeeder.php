@@ -24,6 +24,9 @@ class CategorySeeder extends Seeder
             ],
             [
                 'name' => 'Spanish',
+            ],
+                        [
+                'name' => 'other',
             ]
         ];
         DB::table('categories')->insert($param);
