@@ -132,6 +132,8 @@ return [
     'title' => 'タイトル',
     'body' => '本文',
     'category_id' => 'カテゴリー',
+    'calendar' => '日程',
+    'country' => '国',
     // 'image_path' => '写真'
 ],
 

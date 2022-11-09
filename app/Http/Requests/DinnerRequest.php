@@ -29,6 +29,10 @@ class DinnerRequest extends FormRequest
             'title' => 'required|string|max:30',
             'description' => 'required|string|max:200',
             'category_id' => 'required',
+            'country' => 'required',
+            'language' => 'required',
+            'calendar' => 'required',
+
         ];
         // if ($route === 'meals.store' || ($route === 'meals.update' && $request->file('image'))) {
         //     $rule['image'] = 'required|file|image|mimes:jpg,png';

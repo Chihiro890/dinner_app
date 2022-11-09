@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\DinnerRequest;
 use Illuminate\Support\Facades\Auth;
 
+
 class DinnerController extends Controller
 {
     /**
@@ -17,10 +18,20 @@ class DinnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    // public function index()
+    public function index(Request $request)
     {
-        $dinners = Dinner::with('user')->latest()->Paginate(4);
+        // $dinners = Dinner::with('user')->latest()->Paginate(4);
+        // return view('dinners.index', compact('dinners'));
+    
+// 検索ここから
+        $country = $request->country;
+        $params = $request->query();
+        $dinners = Dinner::with('user')->search($params)->latest()->paginate(4);
+        $dinners->appends(compact('country'));
         return view('dinners.index', compact('dinners'));
+    // 検索ここまで
+        
     }
 
     /**

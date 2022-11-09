@@ -17,13 +17,13 @@ class CategorySeeder extends Seeder
         //
         $param = [
             [
-                'name' => '朝食',
+                'name' => 'English',
             ],
             [
-                'name' => '昼食',
+                'name' => 'Japanese',
             ],
             [
-                'name' => '夕食',
+                'name' => 'Spanish',
             ]
         ];
         DB::table('categories')->insert($param);

@@ -17,16 +17,21 @@ class CreateDinnersTable extends Migration
             $table->id();
 
             $table->string('title');
+            // 追加
+            $table->string('country');
+            $table->date('calendar');
+            $table->string('language');
+
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+                
             $table->foreignId('category_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->text('description');
-
             $table->timestamps();
         });
     }

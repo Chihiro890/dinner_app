@@ -4,10 +4,12 @@
         <article class="mb-2">
             <h2 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
                 {{ $dinner->title }}</h2>
+                <h3>{{ $dinner->country }}</h3>
+                        <h3>event day:{{ $dinner->calendar }}</h3>
             <h3>{{ $dinner->user->name }}</h3>
+                        <h3>language:{{ $dinner->category->name}}</h3>
             <p class="text-sm mb-2 md:text-base font-normal text-gray-600">
-                現在時刻: <span class="text-red-400 font-bold">{{ date('Y-m-d H:i:s') }}</span>
-                記事作成日: {{ $dinner->created_at }}
+                投稿日: {{ $dinner->created_at }}
             </p>
             {{-- <img src="{{ Storage::url($dinner->image_path) }}" alt="" class="mb-4"> --}}
             <p class="text-gray-700 text-base">{!! nl2br(e($dinner->description)) !!}</p>
