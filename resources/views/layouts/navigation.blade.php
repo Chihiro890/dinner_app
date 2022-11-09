@@ -28,7 +28,7 @@
                             @auth
                                 <div>{{ Auth::user()->name }}</div>
                             @else
-                                <div>ゲスト</div>
+                                <div>guest</div>
                             @endauth
 
                             <div class="ml-1">
@@ -131,6 +131,7 @@
 
                 <div class="mt-3 space-y-1">
                     <!-- Authentication -->
+
                     <x-responsive-nav-link :href="route('dinners.create')">
                         {{ __('Create Post') }}
                     </x-responsive-nav-link>
@@ -142,6 +143,7 @@
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>
+
                 </div>
             @else
                 <div class="px-4">
