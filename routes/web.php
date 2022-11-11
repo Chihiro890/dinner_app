@@ -22,27 +22,36 @@ use App\Http\Controllers\CommentController;
 Route::get('/', [DinnerController::class, 'index'])
     ->name('root');
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 
+// Route::resource('dinners', DinnerController::class)
+//     ->only(['create', 'store', 'edit', 'update', 'destroy'])
+//     ->middleware('auth');
 Route::resource('dinners', DinnerController::class)
-    ->only(['create', 'store', 'edit', 'update', 'destroy'])
-    ->middleware('auth');
+    ->only(['create', 'store', 'edit', 'update', 'destroy']);
 
 Route::resource('dinners', DinnerController::class)
     ->only(['show', 'index']);
 
+// Route::resource('dinners.comments', CommentController::class)
+//     ->only(['create', 'store', 'edit', 'update', 'destroy'])
+//     ->middleware('auth');
+
 Route::resource('dinners.comments', CommentController::class)
-    ->only(['create', 'store', 'edit', 'update', 'destroy'])
-    ->middleware('auth');
+    ->only(['create', 'store', 'edit', 'update', 'destroy']);
 
 // プロフィール閲覧
 // Route::resource('user.profile', DinnerController::class)
 //     ->only(['show'])
 //     ->middleware('auth');
 
-Route::get('/user/{user_id}', [DinnerController::class, 'user'])->name('user.show')->middleware('auth');
+// Route::get('/user/{user_id}', [DinnerController::class, 'user'])->name('user.show')->middleware('auth');
+Route::get('/user/{user_id}', [DinnerController::class, 'user'])->name('user.show');
 
 require __DIR__ . '/auth.php';
