@@ -4,15 +4,29 @@
         <article class="mb-2">
             <h2 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
                 {{ $dinner->title }}</h2>
-                <h3>{{ $dinner->country }}</h3>
-                        <h3>event day:{{ $dinner->calendar }}</h3>
-            <h3>{{ $dinner->user->name }}</h3>
-                        <h3>language:{{ $dinner->category->name}}</h3>
+            <h3>{{ $dinner->country }}</h3>
+            <h3>日程:{{ $dinner->calendar }}</h3>
+            {{-- <h3>投稿者: {{ $dinner->user->name }}</h3> --}}
+            {{-- 投稿者プロフィールに移動 --}}
+            <a href="{{ route('user.show', $dinner->user->id) }}">
+                <h3>投稿者:{{ $dinner->user->name }}</h3>
+            </a>
+            {{-- 投稿者プロフィールに移動ここまで --}}
+            {{-- <h3>自己紹介:{{ $dinner->user->profile }}</h3> --}}
+
+            @if (isset($dinner->category) || isset($dinner->other))
+                <h3>language:{{ $dinner->category->name ?? $dinner->other }}</h3>
+
+            @endif
+
+            {{-- <x-dropdown-link :href="route('profile.show')"> --}}
+
             <p class="text-sm mb-2 md:text-base font-normal text-gray-600">
                 投稿日: {{ $dinner->created_at }}
             </p>
             {{-- <img src="{{ Storage::url($dinner->image_path) }}" alt="" class="mb-4"> --}}
-            <p class="text-gray-700 text-base">{!! nl2br(e($dinner->description)) !!}</p>
+            <h3>詳細:<p class="text-gray-700 text-base">{!! nl2br(e($dinner->description)) !!}</p>
+            </h3>
         </article>
 
         <div class="flex flex-row text-center my-4">

@@ -38,4 +38,11 @@ Route::resource('dinners.comments', CommentController::class)
     ->only(['create', 'store', 'edit', 'update', 'destroy'])
     ->middleware('auth');
 
+// プロフィール閲覧
+// Route::resource('user.profile', DinnerController::class)
+//     ->only(['show'])
+//     ->middleware('auth');
+
+Route::get('/user/{user_id}', [DinnerController::class, 'user'])->name('user.show')->middleware('auth');
+
 require __DIR__ . '/auth.php';

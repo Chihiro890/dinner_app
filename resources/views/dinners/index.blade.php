@@ -3,10 +3,11 @@
     {{-- 国検索ここから --}}
     <form class="form-inline my-2 my-lg-0 ml-2">
         <div class="form-group">
+            {{-- class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3"         --}}
             {{-- <input type="search" class="form-control mr-sm-2" name="country" value="{{ request('country') }}"
                         placeholder="国選択" aria-label="検索..."> --}}
-            <select name="country">
-                <option value="">選択してください</option>
+            <select name="country" class="country">
+                <option value="">select a country</option>
                 <option value="Aland Islands" {{ Request::get('country') == 'Aland Islands' ? 'selected' : '' }}>Aland
                     Islands</option>
                 <option value="Albania" {{ Request::get('country') == 'Albania' ? 'selected' : '' }}>Albania</option>
@@ -377,28 +378,23 @@
                 <option value="Zimbabwe" {{ Request::get('country') == 'Zimbabwe' ? 'selected' : '' }}>Zimbabwe
                 </option>
             </select>
+            {{-- 国検索ここまで --}}
+            {{-- 日程検索 --}}
+            <input type="date" name="calendar" class="date" max="9999-12-31"
+                value="{{ Request::get('calendar') }}"
+                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
+            <input type="submit" value="search" class="btn btn-info">
         </div>
-        <input type="date" name="calendar" max="9999-12-31" value="{{ Request::get('calendar') }}"
-            class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
-        <input type="submit" value="検索" class="btn btn-info">
     </form>
-    {{-- 検索ここまで --}}
 
-    {{-- 日程検索 --}}
-    {{-- <form class="form-inline my-2 my-lg-0 ml-2">
-        <div class="form-group">
-            <input type="search" class="form-control mr-sm-2" name="country" value="{{ request('country') }}"
-                        placeholder="国選択" aria-label="検索...">
-        </div>
-        <input type="submit" value="検索" class="btn btn-info">
-    </form> --}}
-    {{-- 日程検索ここまで --}}
+
 
     {{-- 新規投稿 --}}
     <x-dropdown-link :href="route('dinners.create')">
         {{ __('新規投稿') }}
     </x-dropdown-link>
     <form method="POST" action="{{ route('logout') }}">
+        {{-- class="create" --}}
         @csrf
 
         <div class="container max-w-7xl mx-auto px-4 md:px-12 pb-3 mt-3">
@@ -413,7 +409,14 @@
                             <h3>{{ $dinner->country }}</h3>
                             <h3>日程:{{ $dinner->calendar }}</h3>
                             <h3>{{ $dinner->user->name }}</h3>
-                            <h3>言語:{{ $dinner->category->name }}</h3>
+                            <div class="dinner_box">
+                                @if (isset($dinner->category))
+                                    <h3>language:{{ $dinner->category->name }}</h3>
+                                    <h3>{{ $dinner->other }}</h3>
+                                @endif
+                                {{-- <h3>language:{{ $dinner->category->name }}</h3>
+                                <h3>  :{{ $dinner->other }}</h3> --}}
+                            </div>
                             <p class="text-sm mb-2 md:text-base font-normal text-gray-600">
                                 投稿日: {{ $dinner->created_at }}
                             </p>

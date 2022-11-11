@@ -8,6 +8,8 @@ use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\DinnerRequest;
+use App\Models\User;
+use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -57,6 +59,7 @@ class DinnerController extends Controller
     public function store(Request $request)
     {
         $dinner = new Dinner($request->all());
+        // dd($dinner);
         $dinner->user_id = $request->user()->id;
         // $dinner->category_id = implode(",", $request->category_id);
         // $file = $request->file('image');
@@ -105,6 +108,7 @@ class DinnerController extends Controller
     public function edit($id)
     {
         $categories = Category::all();
+        
         $dinner = Dinner::find($id);
         return view('dinners.edit', compact('dinner', 'categories'));
     }
@@ -181,5 +185,11 @@ class DinnerController extends Controller
     public static function createFileName($file)
     {
         return date('YmdHis') . '_' . $file->getClientOriginalName();
+    }
+
+    public function user($id){
+        $user = User::find($id);
+        // dd($user);
+        return view('dinners.user', compact('user'));
     }
 }

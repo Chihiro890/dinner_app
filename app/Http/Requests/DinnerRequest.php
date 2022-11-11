@@ -28,10 +28,11 @@ class DinnerRequest extends FormRequest
         $rule = [
             'title' => 'required|string|max:30',
             'description' => 'required|string|max:200',
-            'category_id' => 'required',
+            // 'category_id' => 'required',
             'country' => 'required',
-            'language' => 'required',
+            // 'language' => 'required',
             'calendar' => 'required',
+            // 'other' => 'required',
 
         ];
         // if ($route === 'meals.store' || ($route === 'meals.update' && $request->file('image'))) {

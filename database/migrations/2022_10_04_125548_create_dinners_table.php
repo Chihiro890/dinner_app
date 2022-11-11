@@ -19,8 +19,9 @@ class CreateDinnersTable extends Migration
             $table->string('title');
             // 追加
             $table->string('country');
+            $table->string('other')->nullable();
             $table->date('calendar');
-            $table->string('language');
+
 
             $table->foreignId('user_id')
                 ->constrained()

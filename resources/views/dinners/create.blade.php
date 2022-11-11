@@ -28,8 +28,17 @@
                     <label for="category{{ $category->id }}">{{ $category->name }}</label>
                     {{-- </div> --}}
                 @endforeach
+                <input type="radio" name="category_id" id="category" value=""
+                    {{ old('category_id') == $category->id ? 'checked' : '' }}>
+                <label for="category">Other</label>
+
             </div>
             {{-- other言語記入欄 --}}
+            <label class="block text-gray-700 text-sm mb-2" for="other">
+            </label>
+            <input type="text" name="other"
+                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
+                placeholder="other language" value="{{ old('other') }}">
 
 
 
@@ -311,14 +320,14 @@
             --}}
 
 
-            <div class="mb-4">
+            {{-- <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="language">
                     言語
                 </label>
                 <input type="text" name="language" rows="10"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
                     required>{{ old('language') }}
-            </div>
+            </div> --}}
 
 
 

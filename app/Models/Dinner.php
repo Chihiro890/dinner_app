@@ -14,8 +14,8 @@ class Dinner extends Model
     protected $fillable = [
         'title',
         'country',
+        'other',
         'calendar',
-        'language',
         'description',
         'category_id',
     ];
