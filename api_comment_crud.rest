@@ -11,7 +11,7 @@ Accept: application/json
 
 ### posts.comments.store
 # @prompt post_id
-POST /api/posts/{{ post_id }}/comments HTTP/1.1
+POST /api/dinners/{{ post_id }}/comments HTTP/1.1
 Host: {{ host }}
 Accept: application/json
 Content-Type: application/json
@@ -39,6 +39,6 @@ Content-Type: application/json
 ### posts.comments.destroy
 # @prompt post_id
 # @prompt comment_id
-DELETE /api/posts/{{ post_id }}/comments/{{ comment_id }} HTTP/1.1
+DELETE /api/dinners/{{ post_id }}/comments/{{ comment_id }} HTTP/1.1
 Host: {{ host }}
 Accept: application/json

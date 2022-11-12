@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\DinnerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('dinners', DinnerController::class)
     ->names('api.dinners');
+
+Route::apiResource('dinners.comments', CommentController::class)
+    ->only(['store', 'show', 'update', 'destroy'])
+    ->names('api.dinners.comments');
