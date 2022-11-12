@@ -380,10 +380,16 @@
             </select>
             {{-- 国検索ここまで --}}
             {{-- 日程検索 --}}
-            <input type="date" name="calendar" class="date" max="9999-12-31"
-                value="{{ Request::get('calendar') }}"
+            <input type="date" name="calendar_s" class="date" max="9999-12-31"
+                value="{{ Request::get('calendar_s') }}"
+                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
+            {{-- <input type="submit" value="search" class="btn btn-info"> --}}
+
+                        <input type="date" name="calendar_e" class="date" max="9999-12-31"
+                value="{{ Request::get('calendar_e') }}"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
             <input type="submit" value="search" class="btn btn-info">
+            
         </div>
     </form>
 

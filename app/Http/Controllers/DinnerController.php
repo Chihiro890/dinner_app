@@ -32,8 +32,8 @@ class DinnerController extends Controller
         $params = $request->query();
         $dinners = Dinner::with('user')->search($params)->latest()->paginate(4);
         $dinners->appends(compact('country', 'calendar'));
-
         // dd($dinners);
+        $dinners->appends(compact('country', 'calendar'));
         return view('dinners.index', compact('dinners'));
     // 検索ここまで
         
