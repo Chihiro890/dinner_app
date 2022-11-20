@@ -384,21 +384,23 @@
                 value="{{ Request::get('calendar_s') }}"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
             {{-- <input type="submit" value="search" class="btn btn-info"> --}}
-
+<p class="from">~</p>
                         <input type="date" name="calendar_e" class="date" max="9999-12-31"
                 value="{{ Request::get('calendar_e') }}"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-half py-2 px-3">
             <input type="submit" value="search" class="btn btn-info">
             
+            <x-dropdown-link :href="route('dinners.create')" class="post">
+        {{ __('新規投稿') }}
+    </x-dropdown-link>
+
         </div>
     </form>
 
 
 
     {{-- 新規投稿 --}}
-    <x-dropdown-link :href="route('dinners.create')">
-        {{ __('新規投稿') }}
-    </x-dropdown-link>
+    
     <form method="POST" action="{{ route('logout') }}">
         {{-- class="create" --}}
         @csrf
@@ -412,8 +414,10 @@
                         <a href="{{ route('dinners.show', $dinner) }}">
                             <h2 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-1 text-3xl md:text-4xl">
                                 {{ $dinner->title }}</h2>
-                            <h3>{{ $dinner->country }}</h3>
-                            <h3>日程:{{ $dinner->calendar }}</h3>
+                                {{-- 国名 --}}
+                            <h3 class="font-bold text-2xl">{{ $dinner->country }}</h3>
+                            {{-- 日程 --}}
+                            <h3 class="font-bold text-2xl">{{ $dinner->calendar }}</h3>
                             <h3>{{ $dinner->user->name }}</h3>
                             <div class="dinner_box">
                                 @if (isset($dinner->category))

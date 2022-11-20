@@ -34,6 +34,7 @@ Route::get('/dashboard', function () {
 //     ->only(['create', 'store', 'edit', 'update', 'destroy'])
 //     ->middleware('auth');
 Route::resource('dinners', DinnerController::class)
+    ->middleware('auth')
     ->only(['create', 'store', 'edit', 'update', 'destroy']);
 
 Route::resource('dinners', DinnerController::class)

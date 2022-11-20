@@ -4,19 +4,33 @@
 
 .date {
     /* width: 300px; */
-    margin-right: 50px;
+    margin-right: 15px;
     /* display: block; */
 
 }
 
 .country {
-    margin-right: 20px;
+    margin-left: 350px;
+    margin-right: 40px;
 }
 
 .dinner_box {
     display: flex;
 }
 
+.from{
+font-size: 30px;
+margin-right: 15px;
+
+}
+.post{
+font-size: 20px;
+margin-top: 5px;
+color: lightsalmon;
+margin-left: 20px;
+font-weight: 600;
+/* border: 1px solid #000; */
+}
 /* .create{
  display: flex;
 } */

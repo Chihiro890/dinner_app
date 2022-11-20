@@ -60,7 +60,9 @@ class DinnerController extends Controller
     {
         $dinner = new Dinner($request->all());
         // dd($dinner);
+        // dd($request);
         $dinner->user_id = $request->user()->id;
+        
         // $dinner->category_id = implode(",", $request->category_id);
         // $file = $request->file('image');
         // $dinner->image = self::createFileName($file);

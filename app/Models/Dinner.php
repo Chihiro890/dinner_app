@@ -19,17 +19,30 @@ class Dinner extends Model
         'description',
         'category_id',
     ];
+    protected $appends = [
+        'user_name',
+        'category_name'
+    ];
+
+    protected $hidden = [
+        'user'
+    ];
+
 
 
     // 検索用のスコープ
     public function scopeSearch(Builder $query, $params)
     {
         // parmsが空だったら終了
-        if(empty($params)){return $query;}
+        if (empty($params)) {
+            return $query;
+        }
 
         // 片方が空だったらもう片方に値を入れる
-        if (empty($params['calendar_s']) || empty($params['calendar_e'])){
-            if (empty($params['calendar_s'])){$params['calendar_s'] = now();}
+        if (empty($params['calendar_s']) || empty($params['calendar_e'])) {
+            if (empty($params['calendar_s'])) {
+                $params['calendar_s'] = now();
+            }
             // if (empty($params['calendar_e'])){$params['calendar_e'] = now()->addYear(10);}
         }
 
@@ -66,5 +79,13 @@ class Dinner extends Model
     //     return $this->hasMany(favorite::class);
     // }
 
+    public function getUserNameAttribute()
+    {
+        return $this->user->name;
+    }
 
+    public function getCategoryNameAttribute()
+    {
+        return $this->category->name ?? null;
+    }
 }

@@ -1,7 +1,14 @@
+
 @host = localhost
 
 ### index
 GET /api/dinners HTTP/1.1
+Host: {{ host }}
+Accept: application/json
+
+
+### index2
+GET /api/dinners?calendar_s=2022-11-15&calendar_e=2022-11-27&country=Brazil HTTP/1.1
 Host: {{ host }}
 Accept: application/json
 
@@ -16,26 +23,19 @@ Accept: application/json
 
 
 ### store
-# @prompt file
-POST /api/posts HTTP/1.1
+POST /api/dinners HTTP/1.1
 Host: {{ host }}
 Accept: application/json
-Content-Type: multipart/form-data; boundary=----storeForm
-# boundatyは送信するデータの目印
+Content-Type: application/json; 
 
-------storeForm
-Content-Disposition: form-data; name="title"
-
-Test タイトル
-------storeForm
-Content-Disposition: form-data; name="body"
-
-Test 本文
-------storeForm
-Content-Disposition: form-data; name="image"; filename="file.jpg"
-
-< {{ file }}
-------storeForm--
+{
+    "title": "test",
+    "country": "test",
+    "calendar": "2022-12-12",
+    "category_id": 1,
+    "description": "test desc",
+    "user_id": 1,
+}
 
 
 
@@ -53,6 +53,18 @@ Content-Disposition: form-data; name="_method"
 PATCH
 ------updateForm
 Content-Disposition: form-data; name="title"
+
+Test タイトル
+------updateForm
+Content-Disposition: form-data; name="calendar"
+
+Test タイトル
+------updateForm
+Content-Disposition: form-data; name="country"
+
+Test タイトル
+------updateForm
+Content-Disposition: form-data; name="description"
 
 Test タイトル
 ------updateForm

@@ -40,7 +40,7 @@
             {{-- <textarea name="profile" id="profile" cols="30" rows="5" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block mt-1 w-full" wire:model.defer="state.profile"></textarea>
                     </div>
                 </div> --}}
-<label for="">{{ $user->profile }}</label>
+<label for="">{!! nl2br(e($user->profile)) !!}</label>
             </div>
 
                             <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
