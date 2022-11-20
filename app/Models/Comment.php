@@ -13,6 +13,13 @@ class Comment extends Model
         'body',
     ];
 
+    protected $appends = [
+    'user_name'
+    ];
+
+    protected $hidden = [
+    'user'
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -26,5 +33,10 @@ class Comment extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    
+    public function getUserNameAttribute()
+    {
+        return $this->user->name;
     }
 }

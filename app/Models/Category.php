@@ -12,6 +12,10 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+    // protected $appends = [
+    // 'category_name'
+    // ];
+
 
 
 

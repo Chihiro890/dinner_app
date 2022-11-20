@@ -1,0 +1,87 @@
+
+@host = localhost
+
+### index
+GET /api/dinners HTTP/1.1
+Host: {{ host }}
+Accept: application/json
+
+
+### index2
+GET /api/dinners?calendar_s=2022-11-15&calendar_e=2022-11-27&country=Brazil HTTP/1.1
+Host: {{ host }}
+Accept: application/json
+
+
+
+### show
+# @prompt dinner_id
+GET /api/dinners/{{ dinner_id }}?perPage=20&page=1 HTTP/1.1
+Host: {{ host }}
+Accept: application/json
+
+
+
+### store
+POST /api/dinners HTTP/1.1
+Host: {{ host }}
+Accept: application/json
+Content-Type: application/json; 
+
+{
+    "title": "test",
+    "country": "test",
+    "calendar": "2022-12-12",
+    "category_id": 1,
+    "description": "test desc",
+    "user_id": 1,
+}
+
+
+
+### update
+# @prompt file
+POST /api/dinners/1 HTTP/1.1
+Host: {{ host }}
+Accept: application/json
+Content-Type: multipart/form-data; boundary=----updateForm
+# boundatyは送信するデータの目印
+
+------updateForm
+Content-Disposition: form-data; name="_method"
+
+PATCH
+------updateForm
+Content-Disposition: form-data; name="title"
+
+Test タイトル
+------updateForm
+Content-Disposition: form-data; name="calendar"
+
+Test タイトル
+------updateForm
+Content-Disposition: form-data; name="country"
+
+Test タイトル
+------updateForm
+Content-Disposition: form-data; name="description"
+
+Test タイトル
+------updateForm
+Content-Disposition: form-data; name="body"
+
+Test 本文
+------updateForm
+Content-Disposition: form-data; name="image"; filename="file.jpg"
+
+< {{ file }}
+------updateForm--
+
+
+
+### destroy
+# @prompt dinner_id
+DELETE /api/dinners/{{ dinner_id }} HTTP/1.1
+Host: {{ host }}
+Accept: application/json
+
